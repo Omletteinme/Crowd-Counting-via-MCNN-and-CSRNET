@@ -1,0 +1,27 @@
+# Ignore datasets and large archives
+ShanghaiTech/
+*.zip
+
+# Ignore evaluation plots and images
+*.png
+
+# Ignore Python virtual environments
+venv/
+.venv/
+env/
+
+# Ignore Jupyter Notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Ignore Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore IDE configs
+.vscode/
+.idea/
+
+# Ignore local run data or logs
+*.log

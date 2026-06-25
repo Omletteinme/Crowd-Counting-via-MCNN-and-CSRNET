@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrowdSense - Advanced Density Estimation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="dashboard">
+        <header>
+            <div class="logo">
+                <i class="ph-fill ph-users-three"></i>
+                <h1>CrowdSense</h1>
+            </div>
+            <p class="subtitle">AI-Powered Crowd Density Estimation</p>
+        </header>
+
+        <section class="core-interface">
+            <!-- Upload Panel -->
+            <div class="panel upload-panel">
+                <div class="panel-header">
+                    <h2><i class="ph ph-upload-simple"></i> Image Input</h2>
+                </div>
+                
+                <div class="upload-area" id="drop-zone">
+                    <input type="file" id="file-input" accept="image/jpeg, image/png, image/jpg" hidden>
+                    <div class="upload-content" id="upload-prompt">
+                        <div class="upload-icon-wrapper">
+                            <i class="ph ph-image"></i>
+                        </div>
+                        <h3>Upload or Drag Image</h3>
+                        <p>Supports PNG, JPG, JPEG</p>
+                        <button class="btn-primary" id="browse-btn">Browse Files</button>
+                    </div>
+                    <div class="preview-container hidden" id="preview-container">
+                        <img id="image-preview" src="" alt="Preview">
+                        <button class="btn-icon remove-btn" id="remove-btn" title="Remove Image">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="controls-area">
+                    <div class="control-group">
+                        <label>Select Architecture</label>
+                        <div class="model-toggle">
+                            <input type="radio" id="model-csrnet" name="model" value="csrnet" checked>
+                            <label for="model-csrnet" class="toggle-btn">CSRNet</label>
+
+                            <input type="radio" id="model-mcnn" name="model" value="mcnn">
+                            <label for="model-mcnn" class="toggle-btn">MCNN</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary btn-large generate-btn" id="generate-btn" disabled>
+                        <span>Analyze Crowd</span>
+                        <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="panel results-panel">
+                <div class="panel-header">
+                    <h2><i class="ph ph-chart-bar"></i> Analysis Report</h2>
+                </div>
+
+                <div class="results-content empty" id="results-content">
+                    <div class="empty-state">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <p>Upload an image and run analysis to view results</p>
+                    </div>
+
+                    <div class="loading-state hidden" id="loading-state">
+                        <div class="spinner"></div>
+                        <p>Running Neural Network...</p>
+                        <span class="pulse-text">Generating Density Map</span>
+                    </div>
+
+                    <div class="success-state hidden" id="success-state">
+                        
+                        <div class="metrics-grid">
+                            <div class="metric-card highlight">
+                                <div class="metric-icon"><i class="ph ph-users"></i></div>
+                                <div class="metric-info">
+                                    <span class="label">People Count</span>
+                                    <h3 class="value" id="res-count">0</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-icon"><i class="ph ph-shield-check"></i></div>
+                                <div class="metric-info">
+                                    <span class="label">Confidence</span>
+                                    <h3 class="value" id="res-confidence">0%</h3>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-icon"><i class="ph ph-clock"></i></div>
+                                <div class="metric-info">
+                                    <span class="label">Inference Time</span>
+                                    <h3 class="value" id="res-time">0.0s</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="map-container">
+                            <div class="map-header">
+                                <h3>Predicted Density Map</h3>
+                                <span class="badge">Heatmap</span>
+                            </div>
+                            <div class="map-wrapper">
+                                <img id="res-density" src="" alt="Density Map">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

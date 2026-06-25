@@ -1,0 +1,7 @@
+Flask==3.0.0
+torch
+torchvision
+opencv-python
+numpy
+matplotlib
+scipy
