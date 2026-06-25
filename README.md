@@ -1,3 +1,13 @@
+---
+title: CrowdSense
+emoji: 👥
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # CrowdSense: Crowd Counting & Density Estimation via MCNN and CSRNet
 
 A clean, minimal, professional dark-themed web application that performs crowd density estimation and counting using deep learning. The application allows users to upload an image and choose between two distinct model architectures (**MCNN** and **CSRNet**) to view the estimated number of people, a generated density heatmap, and the inference time.
